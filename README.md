@@ -8,6 +8,7 @@ This repo is made by Venkatesh. It contains the instrcutions to install:
   - [Libfranka](#libfranka)
   - [franka_ros](#franka_ros)
   - [RealSense](#realsense)
+  - [Cartesian_Impedance_control](Cartesian-Impedance-control-zero-torque-mode)
 
 Tested on Ubuntu 16.04 (ROS Kinetic) /20.04 (ROS Noetic)
 
@@ -101,11 +102,11 @@ source devel/setup.bash
 
 roslaunch franka_control franka_control.launch robot_ip:=172.16.0.2
 ```
-You will see a bunch of topics when you do _**rostopic_list**_ as in the image
+You will see a bunch of topics when you do _**rostopic_list**_ :
 
-![alt text](https://github.com/imanlab/Franka_datacollection_pipeline/blob/main/franka_control.png)
+![alt text](https://github.com/imanlab/Franka_RealSense_data_collection/blob/main/franka_control.png)
 
-if you see 
+if you see an error when you enter the roslaunch command above
 ```
       [ERROR]: libfranka: Move command aborted: motion aborted by reflex! ["communication_constraints_violation"]
 ```
@@ -153,3 +154,55 @@ Congratulations you have now installed RealSense camera as well
 roslaunch realsense2_camera rs_camera.launch
 ```
 and check the list of topics published using _**rostopic_list**_
+
+
+### Cartesian Impedance control - zero torque mode
+
+To have all the joints freed up similar to when the emergency stop button is pressed down, do the following
+
+1) Go to the franka_example_controllers package in your franka_ros i.e
+```
+cd ~/catkin_ws/src/franka_ros/franka_example_controllers
+```
+2) Go to the _**config**_ folder. Replace the franka_example_controllers.yaml file with the one present in this repo
+3) Go to the _**cfg**_ folder. Replace the compliance_param.cfg with the one present in this repo
+4) Go to the _**include**_ folder. Replace the pseudo_inversion.h with the one present in this repo.
+5) Go to the _**src**_ folder. Replace the cartesian_impedance_example_controller.cpp file with the one present in this repo.
+
+That's it! You can check the owrking of the controller doing the following:
+
+1) Add the franka_moveit.launch file from this repo in your main package's _**launch**_ folder. As an example, I am adding it to the lanuch folder of the franka_example_controllers package. Now, I can see a file named franka_moveit.launc when I do 
+```
+cd ~/catkin_ws/src/franka_ros/franka_example_controllers/launch
+```
+Now run the launch file 
+```
+cd ~/catkin_ws
+
+source devel/setup.bash
+
+roslaunch franka_lcas_experiments franka_moveit.launch
+```
+
+2) Add the strawberry_data_collection_top.py file from this repo in you _**srcipt**_ folder. Again as an example I am adding it to the franka_example_controllers package. Now, I can see a file named strawberry_data_collection_top.py when I do
+```
+cd ~/catkin_ws/src/franka_ros/franka_example_controllers/script
+```
+Open a new terminal and do the following
+```
+cd ~/catkin_ws
+
+source devel/setup.bash
+
+cd ~/catkin_ws/src/franka_ros/franka_example_controllers/script
+
+chmod +x strawberry_data_collection_top.py
+
+rosrun franka_example_controllers strawberry_data_collection_top.py
+```
+The Franka Panda robot will by default be in position control mode and you cannot move it. It should go to home position if you press **"h"** in the terminal. Now press **"t"**. The robot will use the cartesian_impedance_controller and you can freely move the robot. 
+
+**That's it. Enjoy!!**
+
+### Author:
+Venkatesh Sripada: s.venkatesh779@gmail.com
