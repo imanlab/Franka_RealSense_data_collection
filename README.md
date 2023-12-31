@@ -15,7 +15,7 @@ Tested on Ubuntu 16.04 (ROS Kinetic) /20.04 (ROS Noetic)
 **Note: This repository has one Python file only to check the working of the system**
 
 
-If you are working with strawberries for your dataset, you can have a look at Franceso and Chiara's code for Python files and dataset https://github.com/imanlab/Franka_datacollection_pipeline
+If you are working with strawberries for your dataset, you can have a look at Franceso and Chiara's code for Python files and dataset https://github.com/imanlab/Franka_datacollection_pipeline. The Python file in this repository is taken from the above repository
 
 ### Libfranka
 
