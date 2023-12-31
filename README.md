@@ -73,7 +73,7 @@ source /opt/ros/noetic/setup.sh
 catkin_init_workspace src
 
 ```
-2) Now have your franka_ros version ready (For IML it will be either 0.6.0 or 0.9.0)
+2) Now have your franka_ros version ready (For IML it will be either 0.6.0 or 0.8.0)
 ```
 git clone --recursive https://github.com/frankaemika/franka_ros src/franka_ros
 
