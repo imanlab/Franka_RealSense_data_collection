@@ -169,9 +169,9 @@ cd ~/catkin_ws/src/franka_ros/franka_example_controllers
 4) Go to the _**include**_ folder. Replace the pseudo_inversion.h with the one present in this repo.
 5) Go to the _**src**_ folder. Replace the cartesian_impedance_example_controller.cpp file with the one present in this repo.
 
-That's it! You can check the owrking of the controller doing the following:
+That's it! You can check the working of the controller doing the following:
 
-1) Add the franka_moveit.launch file from this repo in your main package's _**launch**_ folder. As an example, I am adding it to the lanuch folder of the franka_example_controllers package. Now, I can see a file named franka_moveit.launc when I do 
+1) Add the franka_moveit.launch file from this repo in your main package's _**launch**_ folder. As an example, I am adding it to the lanuch folder of the franka_example_controllers package. Now, I can see a file named franka_moveit.launch when I do 
 ```
 cd ~/catkin_ws/src/franka_ros/franka_example_controllers/launch
 ```
@@ -181,13 +181,10 @@ cd ~/catkin_ws
 
 source devel/setup.bash
 
-roslaunch franka_lcas_experiments franka_moveit.launch
+roslaunch franka_example_controllers franka_moveit.launch
 ```
 
-2) Add the data_collection_top.py file from this repo in you _**srcipt**_ folder. Again as an example I am adding it to the franka_example_controllers package. Now, I can see a file named data_collection_top.py when I do
-```
-cd ~/catkin_ws/src/franka_ros/franka_example_controllers/script
-```
+2) Add the data_collection_top.py file from this repo in you _**srcipt**_ folder. Again as an example I am adding it to the franka_example_controllers package's **script** folder.
 Open a new terminal and do the following
 ```
 cd ~/catkin_ws
@@ -200,7 +197,9 @@ chmod +x data_collection_top.py
 
 rosrun franka_example_controllers data_collection_top.py
 ```
-The Franka Panda robot will by default be in position control mode and you cannot move it. It should go to home position if you press **"h"** in the terminal. Now press **"t"**. The robot will use the cartesian_impedance_controller and you can freely move the robot. 
+The Franka Panda robot will by default be in position control mode and you cannot move it manually. 
+  - It should go to home position if you press **"h"** in the terminal.
+  - Now press **"t"**. The robot will use the zero torque cartesian impedance controller and you can freely move the robot manually. 
 
 **That's it. Enjoy!!**
 
