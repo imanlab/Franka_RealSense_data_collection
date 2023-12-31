@@ -184,7 +184,7 @@ source devel/setup.bash
 roslaunch franka_lcas_experiments franka_moveit.launch
 ```
 
-2) Add the strawberry_data_collection_top.py file from this repo in you _**srcipt**_ folder. Again as an example I am adding it to the franka_example_controllers package. Now, I can see a file named strawberry_data_collection_top.py when I do
+2) Add the data_collection_top.py file from this repo in you _**srcipt**_ folder. Again as an example I am adding it to the franka_example_controllers package. Now, I can see a file named data_collection_top.py when I do
 ```
 cd ~/catkin_ws/src/franka_ros/franka_example_controllers/script
 ```
@@ -196,9 +196,9 @@ source devel/setup.bash
 
 cd ~/catkin_ws/src/franka_ros/franka_example_controllers/script
 
-chmod +x strawberry_data_collection_top.py
+chmod +x data_collection_top.py
 
-rosrun franka_example_controllers strawberry_data_collection_top.py
+rosrun franka_example_controllers data_collection_top.py
 ```
 The Franka Panda robot will by default be in position control mode and you cannot move it. It should go to home position if you press **"h"** in the terminal. Now press **"t"**. The robot will use the cartesian_impedance_controller and you can freely move the robot. 
 
