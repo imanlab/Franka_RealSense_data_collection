@@ -168,12 +168,25 @@ cd ~/catkin_ws/src/franka_ros/franka_example_controllers
 3) Go to the _**cfg**_ folder. Replace the compliance_param.cfg with the one present in this repo
 4) Go to the _**include**_ folder. Replace the pseudo_inversion.h with the one present in this repo.
 5) Go to the _**src**_ folder. Replace the cartesian_impedance_example_controller.cpp file with the one present in this repo.
+6) Now add the _**panda_moveit_config**_ package from this repository into your **franka_ros** folder, i.e., you will see the panda_moveit_config folder if you do
+```
+ls ~/catkin_ws/src/franka_ros
+```
+
+7) Now run the following commands
+```
+cd ~/catkin_ws
+
+catkin_make
+
+source devel/setup.bash
+```
 
 That's it! You can check the working of the controller doing the following:
 
 1) Add the franka_moveit.launch file from this repo in your main package's _**launch**_ folder. As an example, I am adding it to the lanuch folder of the franka_example_controllers package. Now, I can see a file named franka_moveit.launch when I do 
 ```
-cd ~/catkin_ws/src/franka_ros/franka_example_controllers/launch
+ls ~/catkin_ws/src/franka_ros/franka_example_controllers/launch
 ```
 Now run the launch file 
 ```
