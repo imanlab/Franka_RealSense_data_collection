@@ -40,8 +40,6 @@ git checkout <version>
 
 git submodule update
 
-git clone --recursive https://github.com/frankaemika/libfranka --branch <version>
-
 cd libfranka
 
 mkdir build
@@ -86,7 +84,7 @@ catkin_make -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/path/to/libfranka/buil
 source devel/setup.sh
 ```
 
-Note: If you are on kinetic and get an error about unmet dependencies. Make sure to do the following
+Note: If you are on kinetic and get an error about unmet dependencies. Make sure you are using python 2.7 and do the following
 ```
 sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
 
