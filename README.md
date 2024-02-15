@@ -85,6 +85,14 @@ catkin_make -DCMAKE_BUILD_TYPE=Release -DFranka_DIR:PATH=/path/to/libfranka/buil
 
 source devel/setup.sh
 ```
+
+Note: If you are on kinetic and get an error about unmet dependencies. Make sure to do the following
+```
+sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
+
+sudo apt-get install ros-kinetic-gazebo-ros-control
+```
+
 3) Finally you need to allow your user account to set real-time permissions for its processes
 ```
 sudo addgroup realtime
