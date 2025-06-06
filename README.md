@@ -2,12 +2,13 @@
 Installing RealSense and Franka repositories and code for LfD data collection
 
 ## ABOUT
-**This tutorial explains how to install Franka and RealSense for your Ubuntu Version**
+**This tutorial explains how to install Franka, RealSense, and aruco_ros for your Ubuntu Version**
 
 This repo is made by Venkatesh. It contains the instrcutions to install:
   - [Libfranka](#libfranka)
   - [franka_ros](#franka_ros)
   - [RealSense](#realsense)
+  - [Aruco_ros](#aruco_ros)
   - [Cartesian_Impedance_control](Cartesian-Impedance-control-zero-torque-mode)
 
 Tested on Ubuntu 16.04 (ROS Kinetic) /20.04 (ROS Noetic)
@@ -27,10 +28,10 @@ If you are working with strawberries for your dataset, you can have a look at Fr
 
 5) Now that you know the libfranka version (for IML, it will either be version 0.5.0 or 0.8.0 based on the franka controller), you can install from source libfranka using the following commands
 
+**Note:** As on 06/06/2025, the lab is using ROS Noetic and libfranka version 0.9.0
+
 ```
 cd
-
-sudo apt remove "*libfranka*"
 
 sudo apt install build-essential cmake git libpoco-dev libeigen3-dev
 
@@ -72,6 +73,9 @@ catkin_init_workspace src
 
 ```
 2) Now have your franka_ros version ready (For IML it will be either 0.6.0 or 0.8.0)
+   
+**Note:** Just choosing "noetic-devel" branch from the repo works for ROS Noetic as on 06/06/2025  
+
 ```
 git clone --recursive https://github.com/frankaemika/franka_ros src/franka_ros
 
