@@ -7,6 +7,7 @@ Installing RealSense and Franka repositories and code for LfD data collection
 This repo is made by Venkatesh. It contains the instrcutions to install:
   - [Libfranka](#libfranka)
   - [franka_ros](#franka_ros)
+  - [moveit](#moveit)
   - [RealSense](#realsense)
   - [Aruco_ros](#aruco_ros)
   - [Cartesian_Impedance_control](Cartesian-Impedance-control-zero-torque-mode)
@@ -52,7 +53,7 @@ cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF ..
 cmake --build .
 ```
 
-Congratulations!!! You finished step 1, that is installing libfranka. 2 more to go. 
+Congratulations!!! You finished step 1, that is installing libfranka. 
 
 The next step is installing franka_ros
 
@@ -101,7 +102,7 @@ sudo addgroup realtime
 
 sudo usermod -a -G realtime $(whoami)
 ```
-Congratulations!! You installed franka_ros as well. Before going to step 3, that is installing RealSense, restart your PC. This is important as it resets your user account to work with real-time kernel
+Congratulations!! You installed franka_ros as well. Before going to step 3, that is installing Moveit, restart your PC. This is important as it resets your user account to work with real-time kernel
 
 You can check working of franka_ros using the following commands
 
@@ -124,6 +125,28 @@ this would mostly be because of the mismatch in libfranka and franka_ros version
 
 This error can also appear if the emergency stop is not released. So, make sure the lights on franka panda are blue and not white.
 
+### Moveit
+
+The following steps have been tested on ROS Noetic and are suggested to use. If that does not work only then use panda_moveit_config from this repo
+
+```
+cd ~/catkin_ws/src
+
+git clone -b noetic-devel https://github.com/moveit/panda_moveit_config.git
+
+cd ..
+
+catkin_make
+
+source devel/setup.bash
+
+roslaunch panda_moveit_config move_group.launch
+
+roslaunch panda_moveit_config moveit_rviz.launch
+```
+
+You should be able to see in the rostopics that move_group is installed. The pose of the robot in the real world should be mimicked by rviz and get continually updated. That's it!
+
 ### RealSense
 
 Now for the final step. The RealSense camera we have in IML is IntelRealSense D415. The following steps work for ROS1 and my reference for this tutorial is the realsense [github repo](https://github.com/IntelRealSense/realsense-ros/tree/ros1-legacy). This couild become tricky part as RealSense is moving to ROS2.
@@ -138,7 +161,7 @@ git clone https://github.com/IntelRealSense/realsense-ros.git
 
 git checkout <branch or tag name>
 ```
-2) Now clone the ddynamic_reconfigure [github repo](https://github.com/pal-robotics/ddynamic_reconfigure/tree/kinetic-devel) (tested on ROS kinetic. You can have a look at the dynamic_reconficgure [repo](https://github.com/ros/dynamic_reconfigure) if you are on Noetic). 
+2) Now clone the ddynamic_reconfigure [github repo](https://github.com/pal-robotics/ddynamic_reconfigure/tree/kinetic-devel) (tested on ROS kinetic. Use dynamic_reconficgure [repo](https://github.com/ros/dynamic_reconfigure) if you are on Noetic). 
 ```
 cd ~/catkin_ws/src/
 
@@ -164,6 +187,9 @@ Congratulations you have now installed RealSense camera as well
 roslaunch realsense2_camera rs_camera.launch
 ```
 and check the list of topics published using _**rostopic_list**_
+
+### aruco_ros
+
 
 
 ### Cartesian Impedance control - zero torque mode
