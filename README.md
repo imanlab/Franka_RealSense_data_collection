@@ -161,17 +161,27 @@ git clone https://github.com/IntelRealSense/realsense-ros.git
 
 git checkout <branch or tag name>
 ```
-2) Now clone the ddynamic_reconfigure [github repo](https://github.com/pal-robotics/ddynamic_reconfigure/tree/kinetic-devel) (tested on ROS kinetic. Use dynamic_reconficgure [repo](https://github.com/ros/dynamic_reconfigure) if you are on Noetic). 
+2) Now clone the ddynamic_reconfigure [github repo](https://github.com/pal-robotics/ddynamic_reconfigure/tree/kinetic-devel) (tested on ROS kinetic. Use dynamic_reconficgure [repo](https://github.com/ros/dynamic_reconfigure) if you are on Noetic).
+
+If you are using ROS Kinetic
+
 ```
 cd ~/catkin_ws/src/
 
-git clone https://github.com/pal-robotics/ddynamic_reconfigure/tree/kinetic-devel
-
-git checkout kinetic-devel
+git clone --recursive -b kientic-devel https://github.com/pal-robotics/ddynamic_reconfigure.git
 ```
+
+If you are using ROS Netic
+```
+cd ~/catkin_ws/src
+
+git clone --recursive -b noetic-devel https://github.com/pal-robotics/aruco_ros.git
+```
+
+
 3) Now you have realsense and ddynamic reconfigure in your catkin workspace
 ```
-cd ~/catkin_ws/src/
+cd ~/catkin_ws
 
 catkin_make
 
@@ -181,9 +191,9 @@ source ~/.bashrc
 ```
 Congratulations you have now installed RealSense camera as well
 
- Check the working using the following commands
+Check the working using the following commands
 
- ```
+```
 roslaunch realsense2_camera rs_camera.launch
 ```
 and check the list of topics published using _**rostopic_list**_
