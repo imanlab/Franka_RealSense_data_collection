@@ -190,6 +190,41 @@ and check the list of topics published using _**rostopic_list**_
 
 ### aruco_ros
 
+To use the aruco marker and communicate with the aruco marker via ROS do the following
+
+```
+cd ~/catkin_ws/src
+
+git clone -b noetic-devel https://github.com/pal-robotics/aruco_ros.git
+
+cd ~/catkin_ws
+
+catkin_make -DCMAKE_PREFIX_PATH=/opt/ros/noetic -DOpenCV_DIR=/usr/lib/x86_64-linux-gnu/cmake/opencv4
+
+source devel/setup.bash
+```
+
+**Note:** It is important to build the package using the above command i.e with `-DOpenCV_DIR=` and not a simple `catkin_make`
+
+Once the aruco_ros is built and source without errors or warnings, make the following changes
+
+1) Within the newly installed aruco_ros package go to the aruco_ros folder and open the single.launch or double.launch
+2) Change the default values of the `markerId` and `markerSize` arguments. I am using markerId 8 and markerSize 0.05
+3) Change `remap from="/camera_info" to ="/camera/color/camera_info"`
+4) Change `remap from="/image" to="/camera/color/image_raw"`
+5) Change `param name="camera_frame" value="camera_color_optical_frame"`
+
+Save these changes and run
+
+```
+cd ~/catkin_ws
+
+source devel/setup.bash
+
+roslaunch aruco_ros single.launch
+```
+
+You can see that the aruco marker is being detected. You can verify by checking `rostopic echo /aruco_simple/pose` or using rviz
 
 
 ### Cartesian Impedance control - zero torque mode
