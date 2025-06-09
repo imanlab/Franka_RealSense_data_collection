@@ -75,7 +75,7 @@ catkin_init_workspace src
 ```
 2) Now have your franka_ros version ready (For IML it will be either 0.6.0 or 0.8.0)
    
-**Note:** Just choosing "noetic-devel" branch from the repo works for ROS Noetic as on 06/06/2025  
+**Note:** Instead of specifying the excact version as mentioned above just choosing "noetic-devel" branch from the repo works for ROS Noetic as on 06/06/2025. So, `<version>` during `git checkout` below will be `noetic-devel`
 
 ```
 git clone --recursive https://github.com/frankaemika/franka_ros src/franka_ros
