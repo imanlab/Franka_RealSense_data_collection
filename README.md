@@ -1,8 +1,9 @@
 # Franka_RealSense_data_collection
-Installing RealSense and Franka repositories and code for LfD data collection
+Installing RealSense and Franka repositories and code for LfD data collection. 
+
+**You can also use this repository as a guide to install the following packages**, in which case you do not need to clone this repository. 
 
 ## ABOUT
-**This tutorial explains how to install Franka, RealSense, and aruco_ros for your Ubuntu Version**
 
 This repo is made by Venkatesh. It contains the instrcutions to install:
   - [Libfranka](#libfranka)
@@ -171,11 +172,11 @@ cd ~/catkin_ws/src/
 git clone --recursive -b kientic-devel https://github.com/pal-robotics/ddynamic_reconfigure.git
 ```
 
-If you are using ROS Netic
+If you are using ROS Noetic
 ```
 cd ~/catkin_ws/src
 
-git clone --recursive -b noetic-devel https://github.com/pal-robotics/aruco_ros.git
+git clone --recursive -b noetic-devel https://github.com/ros/dynamic_reconfigure.git
 ```
 
 
