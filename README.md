@@ -214,11 +214,11 @@ catkin_make -DCMAKE_PREFIX_PATH=/opt/ros/noetic -DOpenCV_DIR=/usr/lib/x86_64-lin
 source devel/setup.bash
 ```
 
-**Note:** It is important to build the package using the above command i.e with `-DOpenCV_DIR=` and not a simple `catkin_make`
+**Note:** It is important to build the package using the above command i.e with `-DOpenCV_DIR=`
 
-Once the aruco_ros is built and source without errors or warnings, make the following changes
+Once the aruco_ros is built and sourced without errors or warnings, make the following changes
 
-1) Within the newly installed aruco_ros package go to the aruco_ros folder and open the single.launch or double.launch
+1) Within the newly installed aruco_ros package go to the src/aruco_ros folder and open the single.launch or double.launch
 2) Change the default values of the `markerId` and `markerSize` arguments. I am using markerId 8 and markerSize 0.05
 3) Change `remap from="/camera_info" to ="/camera/color/camera_info"`
 4) Change `remap from="/image" to="/camera/color/image_raw"`
